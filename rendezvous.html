@@ -72,16 +72,36 @@ window.onload = function() {
 
     const container = document.querySelector(".container");
 
-    container.innerHTML = `
-        <h2>On a un rendez-vous ❤️</h2>
+    container.style.opacity = 0;
+    container.style.transform = "translateY(20px)";
 
-        <p><strong>Date :</strong> ${date}</p>
-        <p><strong>Activité :</strong> ${activite}</p>
+    setTimeout(() => {
 
-        <p style="margin-top:20px;">
-            J’ai déjà hâte ✨
-        </p>
-    `;
+        container.style.transition = "1s";
+        container.style.opacity = 1;
+        container.style.transform = "translateY(0px)";
+
+        container.innerHTML = `
+            <h2>❤️ Notre rendez-vous est confirmé</h2>
+
+            <p style="font-size:18px;">
+                📅 <strong>Date :</strong> ${date}
+            </p>
+
+            <p style="font-size:18px;">
+                🎯 <strong>Activité :</strong> ${activite}
+            </p>
+
+            <p style="margin-top:20px; font-size:20px;">
+                Déjà hâte !
+            </p>
+
+            <div style="font-size:40px; margin-top:20px;">
+                ❤️
+            </div>
+        `;
+
+    }, 500);
 };
 </script>
     
