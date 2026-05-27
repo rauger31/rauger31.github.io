@@ -216,23 +216,32 @@ function validerChoix(){
         return;
     }
 
+    // 🎉 CONFETTIS
+    confetti({
+        particleCount: 150,
+        spread: 90,
+        origin: { y: 0.6 }
+    });
+
     const result = document.getElementById("result");
 
     result.style.display = "block";
-
     result.innerHTML = `
         <h3>Rendez-vous confirmé ❤️</h3>
         <p><strong>Date :</strong> ${date}</p>
         <p><strong>Activité :</strong> ${activite.value}</p>
     `;
 
-    // 👉 petite pause avant redirection (optionnel mais joli)
+    localStorage.setItem("date", date);
+    localStorage.setItem("activite", activite.value);
+    
     setTimeout(() => {
         window.location.href = "rendezvous.html";
-    }, 1500);
+    }, 2000);
 }
 
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </body>
 </html>
