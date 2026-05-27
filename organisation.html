@@ -1,42 +1,120 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Organisation</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+
+<style>
+body{
+    margin:0;
+    background:#e8d6c3;
+    font-family:Georgia, serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.container{
+    width:370px;
+    background:#f5e6d6;
+    padding:20px;
+    border-radius:25px;
+}
+
+h2{
+    text-align:center;
+    color:#5d4635;
+}
+
+.calendar{
+    background:white;
+    padding:15px;
+    border-radius:15px;
+    margin-bottom:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+
+.activity{
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    text-align:center;
+    font-size:14px;
+}
+
+.activity img{
+    width:100%;
+    height:90px;
+    object-fit:cover;
+}
+
+button{
+    margin-top:20px;
+    width:100%;
+    padding:15px;
+    border:none;
+    background:#7b9a6b;
+    color:white;
+    border-radius:15px;
+    font-size:18px;
+}
+</style>
 </head>
+
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <h1>Organisons ça ✨</h1>
+    <h2>Choisis une date ❤️</h2>
 
-        <!-- Zone photo -->
-        <div class="photo-container">
-            <img src="images/photo4.jpg" alt="Photo souvenir">
+    <div class="calendar">
+        📅 Mai 2024
+    </div>
+
+    <h2>Quel style de rendez-vous ?</h2>
+
+    <div class="grid">
+
+        <div class="activity">
+            <img src="wine.jpg">
+            Verre
         </div>
 
-        <form>
+        <div class="activity">
+            <img src="restaurant.jpg">
+            Resto
+        </div>
 
-            <label for="date">Choisis une date :</label>
-            <input type="date" id="date">
+        <div class="activity">
+            <img src="cinema.jpg">
+            Cinéma
+        </div>
 
-            <label for="activity">Choisis une activité :</label>
+        <div class="activity">
+            <img src="hike.jpg">
+            Randonnée
+        </div>
 
-            <select id="activity">
-                <option>Restaurant 🍝</option>
-                <option>Cinéma 🎬</option>
-                <option>Balade 🌳</option>
-                <option>Bowling 🎳</option>
-                <option>Surprise ✨</option>
-            </select>
+        <div class="activity">
+            <img src="sunset.jpg">
+            Coucher de soleil
+        </div>
 
-            <button type="submit">Valider ❤️</button>
-
-        </form>
+        <div class="activity">
+            <img src="walk.jpg">
+            Promenade
+        </div>
 
     </div>
+
+    <button>C'EST PARFAIT !</button>
+
+</div>
 
 </body>
 </html>
