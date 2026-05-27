@@ -1,3 +1,5 @@
+console.log("JS chargé");
+
 const noButton = document.getElementById("noButton");
 
 if (noButton) {
