@@ -2,8 +2,12 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Choix du rendez-vous</title>
 
 <style>
+
 body{
     margin:0;
     background:#e8d6c3;
@@ -12,6 +16,7 @@ body{
     justify-content:center;
     align-items:center;
     min-height:100vh;
+    padding:20px;
 }
 
 .container{
@@ -19,50 +24,105 @@ body{
     background:#f5e6d6;
     padding:20px;
     border-radius:25px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
 }
 
 h2{
     text-align:center;
     color:#5d4635;
+    margin-bottom:15px;
 }
 
-.calendar{
+.date-box{
     background:white;
     padding:15px;
     border-radius:15px;
-    margin-bottom:20px;
+    margin-bottom:25px;
+}
+
+input[type="date"]{
+    width:100%;
+    padding:12px;
+    border-radius:10px;
+    border:2px solid #d8c0a8;
+    font-size:16px;
+    box-sizing:border-box;
 }
 
 .grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:10px;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
 }
 
 .activity{
+    position:relative;
+}
+
+.activity input{
+    display:none;
+}
+
+.activity label{
+    display:block;
     background:white;
-    border-radius:12px;
+    border-radius:15px;
     overflow:hidden;
-    text-align:center;
-    font-size:14px;
+    cursor:pointer;
+    transition:0.3s;
+    border:3px solid transparent;
+    height:100%;
+}
+
+.activity label:hover{
+    transform:scale(1.03);
 }
 
 .activity img{
     width:100%;
-    height:90px;
+    height:110px;
     object-fit:cover;
 }
 
+.activity span{
+    display:block;
+    padding:10px;
+    text-align:center;
+    font-size:14px;
+    color:#5d4635;
+}
+
+.activity input:checked + label{
+    border:3px solid #7b9a6b;
+    background:#eef5ea;
+}
+
 button{
-    margin-top:20px;
+    margin-top:25px;
     width:100%;
-    padding:15px;
+    padding:16px;
     border:none;
     background:#7b9a6b;
     color:white;
     border-radius:15px;
     font-size:18px;
+    cursor:pointer;
+    transition:0.3s;
 }
+
+button:hover{
+    background:#6a895c;
+}
+
+.result{
+    margin-top:20px;
+    background:white;
+    padding:15px;
+    border-radius:15px;
+    color:#5d4635;
+    display:none;
+}
+
 </style>
 </head>
 
@@ -72,8 +132,8 @@ button{
 
     <h2>Choisis une date ❤️</h2>
 
-    <div class="calendar">
-        📅 Mai 2026
+    <div class="date-box">
+        <input type="date" id="date">
     </div>
 
     <h2>Quel style de rendez-vous ?</h2>
@@ -81,42 +141,96 @@ button{
     <div class="grid">
 
         <div class="activity">
-            <img src="wine.jpg">
-            Verre
+            <input type="radio" name="activity" id="verre" value="Aller boire un verre 🍷">
+            <label for="verre">
+                <img src="wine.jpg">
+                <span>Verre</span>
+            </label>
         </div>
 
         <div class="activity">
-            <img src="restaurant.jpg">
-            Resto
+            <input type="radio" name="activity" id="resto" value="Restaurant 🍝">
+            <label for="resto">
+                <img src="restaurant.jpg">
+                <span>Resto</span>
+            </label>
         </div>
 
         <div class="activity">
-            <img src="cinema.jpg">
-            Cinéma
+            <input type="radio" name="activity" id="cinema" value="Cinéma 🍿">
+            <label for="cinema">
+                <img src="cinema.jpg">
+                <span>Cinéma</span>
+            </label>
         </div>
 
         <div class="activity">
-            <img src="images/Image (8).jpg">
-            Rando pyrénée
+            <input type="radio" name="activity" id="rando" value="Randonnée Pyrénées ⛰️">
+            <label for="rando">
+                <img src="images/Image (8).jpg">
+                <span>Rando Pyrénées</span>
+            </label>
         </div>
 
         <div class="activity">
-            <img src="images/Image (3).jpg">
-            Pétanque & coucher de soleil à Pech David
+            <input type="radio" name="activity" id="petanque" value="Pétanque & coucher de soleil 🌅">
+            <label for="petanque">
+                <img src="images/Image (3).jpg">
+                <span>Pétanque & sunset</span>
+            </label>
         </div>
 
         <div class="activity">
-            <img src="images/Image (7).jpg">
-            Course à pied (si tu veux me voir à genoux)
+            <input type="radio" name="activity" id="course" value="Course à pied 🏃">
+            <label for="course">
+                <img src="images/Image (7).jpg">
+                <span>Course à pied</span>
+            </label>
         </div>
 
     </div>
 
-    <button onclick="window.location.href='rendezvous.html'">
-            C'EST PARFAIT !!
+    <button onclick="validerChoix()">
+        C'EST PARFAIT !!
     </button>
 
+    <div class="result" id="result"></div>
+
 </div>
+
+<script>
+
+function validerChoix(){
+
+    const date = document.getElementById("date").value;
+
+    const activite = document.querySelector('input[name="activity"]:checked');
+
+    if(!date){
+        alert("Choisis une date ❤️");
+        return;
+    }
+
+    if(!activite){
+        alert("Choisis une activité ❤️");
+        return;
+    }
+
+    const result = document.getElementById("result");
+
+    result.style.display = "block";
+
+    result.innerHTML = `
+        <h3>Rendez-vous confirmé ❤️</h3>
+        <p><strong>Date :</strong> ${date}</p>
+        <p><strong>Activité :</strong> ${activite.value}</p>
+    `;
+
+    console.log("Date :", date);
+    console.log("Activité :", activite.value);
+}
+
+</script>
 
 </body>
 </html>
