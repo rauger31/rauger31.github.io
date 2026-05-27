@@ -50,9 +50,21 @@ button:hover {
     height: 200px;
 }
 
+.choice {
+    position: relative;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    position: relative;
+}
+
 .no-btn {
     background:#8b5d5d;
     position: absolute;
+    transition: 0.1s;
 }
 
 .photo-container {
