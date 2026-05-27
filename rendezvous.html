@@ -64,5 +64,26 @@ button{
     </button>
 </div>
 
+<script>
+window.onload = function() {
+
+    const date = localStorage.getItem("date");
+    const activite = localStorage.getItem("activite");
+
+    const container = document.querySelector(".container");
+
+    container.innerHTML = `
+        <h2>On a un rendez-vous ❤️</h2>
+
+        <p><strong>Date :</strong> ${date}</p>
+        <p><strong>Activité :</strong> ${activite}</p>
+
+        <p style="margin-top:20px;">
+            J’ai déjà hâte ✨
+        </p>
+    `;
+};
+</script>
+    
 </body>
 </html>
