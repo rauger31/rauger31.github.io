@@ -57,4 +57,8 @@ if (noButton) {
 
     // mobile
     noButton.addEventListener("touchstart", escapeLogic);
+
+    noButton.addEventListener("mouseover", () => {
+    noButton.style.transform = "scale(1.1) rotate(" + (Math.random()*10-5) + "deg)";
+});
 }
