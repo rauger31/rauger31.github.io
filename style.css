@@ -31,6 +31,15 @@ button {
     transition: 0.3s;
 }
 
+.btn{
+    display:inline-block;
+    padding:15px 35px;
+    background:#7c9b6d;
+    color:white;
+    text-decoration:none;
+    border-radius:15px;
+}
+
 button:hover {
     background-color: #c2185b;
 }
