@@ -40,6 +40,9 @@ if (noButton && yesButton) {
         moveNo();
     }
 
+    const rotation = Math.random() * 40 - 20;
+    noButton.style.transform = `rotate(${rotation}deg)`;
+    
     // 🖱️ PC
     noButton.addEventListener("mouseenter", growYes);
 
