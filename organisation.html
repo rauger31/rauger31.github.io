@@ -205,6 +205,7 @@ function validerChoix(){
 
     const date = document.getElementById("date").value;
     const activite = document.querySelector('input[name="activity"]:checked');
+    const overlay = document.getElementById("overlay");
 
     if(!date){
         alert("Choisis une date ❤️");
@@ -216,32 +217,43 @@ function validerChoix(){
         return;
     }
 
+    // 💾 SAUVEGARDE
+    localStorage.setItem("date", date);
+    localStorage.setItem("activite", activite.value);
+
     // 🎉 CONFETTIS
     confetti({
-        particleCount: 150,
-        spread: 90,
+        particleCount: 200,
+        spread: 100,
         origin: { y: 0.6 }
     });
 
-    const result = document.getElementById("result");
+    // 🌟 ANIMATION OVERLAY
+    overlay.classList.add("show");
 
-    result.style.display = "block";
-    result.innerHTML = `
-        <h3>Rendez-vous confirmé ❤️</h3>
-        <p><strong>Date :</strong> ${date}</p>
-        <p><strong>Activité :</strong> ${activite.value}</p>
-    `;
+    // ⏳ COMPTE À REBOURS VISUEL
+    let countdown = 2;
 
-    localStorage.setItem("date", date);
-    localStorage.setItem("activite", activite.value);
-    
-    setTimeout(() => {
-        window.location.href = "rendezvous.html";
-    }, 2000);
+    overlay.innerHTML = "Préparation du rendez-vous ❤️...";
+
+    const interval = setInterval(() => {
+
+        countdown--;
+
+        if(countdown === 1){
+            overlay.innerHTML = "Presque prêt ✨";
+        }
+
+        if(countdown <= 0){
+            clearInterval(interval);
+            window.location.href = "rendezvous.html";
+        }
+
+    }, 1000);
 }
-
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<div id="overlay">Préparation du rendez-vous ❤️...</div>
 </body>
 </html>
