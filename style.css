@@ -60,13 +60,29 @@ button{
 .no-btn{
     background:#8b5d5d;
 
-    /* IMPORTANT */
     position:fixed;
 
-    left:60%;
-    top:70%;
+    /* position de départ */
+    left:52%;
+    top:67%;
 
     z-index:9999;
 
-    transition:0.15s;
+    transition:
+        left 0.5s ease,
+        top 0.5s ease,
+        transform 0.5s ease;
+
+    width:140px;
+}
+
+.choice img{
+    width:100%;
+    border-radius:15px;
+    transition:0.4s ease;
+}
+
+.yes-img{
+    position:relative;
+    z-index:5;
 }
