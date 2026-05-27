@@ -1,16 +1,11 @@
 const noButton = document.getElementById("noButton");
+const yesButton = document.getElementById("yesButton");
 
-if (noButton) {
+let attempts = 0;
 
-    let speed = 1;
-    let attempts = 0;
+if (noButton && yesButton) {
 
-    const texts = [
-        "Non 😢",
-        "T'es sûr ?"
-    ];
-
-    function moveButton() {
+    function moveNo() {
 
         const rect = noButton.getBoundingClientRect();
 
@@ -24,41 +19,30 @@ if (noButton) {
         noButton.style.top = y + "px";
     }
 
-    function escapeLogic() {
+    function growYes() {
 
         attempts++;
 
-        // change le texte
-        if (attempts < texts.length) {
-            noButton.textContent = texts[attempts];
-        }
+        // 🔥 agrandit le bouton OUI
+        let scale = 1 + attempts * 0.15;
+        yesButton.style.transform = `scale(${scale})`;
 
-        // augmente la vitesse
-        speed += 0.2;
+        // rend le bouton OUI plus “important”
+        yesButton.style.transition = "0.3s";
+        yesButton.style.boxShadow = `0 0 ${10 + attempts * 5}px rgba(233,30,99,0.6)`;
 
-        // bouge plus loin
-        moveButton();
+        // texte évolutif
+        if (attempts === 1) yesButton.textContent = "OUI ❤️";
+        if (attempts === 2) yesButton.textContent = "OUI 😍";
+        if (attempts === 3) yesButton.textContent = "OUI 💍";
+        if (attempts >= 4) yesButton.textContent = "OUIII 🔥";
 
-        // après 3 essais → mode impossible
-        if (attempts >= 3) {
-
-            noButton.textContent = "❌ Impossible";
-            noButton.style.background = "#333";
-
-            // fuite automatique toutes les 200ms
-            setInterval(() => {
-                moveButton();
-            }, 200);
-        }
+        moveNo();
     }
 
-    // desktop
-    noButton.addEventListener("mouseenter", escapeLogic);
+    // 🖱️ PC
+    noButton.addEventListener("mouseenter", growYes);
 
-    // mobile
-    noButton.addEventListener("touchstart", escapeLogic);
-
-    noButton.addEventListener("mouseover", () => {
-    noButton.style.transform = "scale(1.1) rotate(" + (Math.random()*10-5) + "deg)";
-});
+    // 📱 mobile
+    noButton.addEventListener("touchstart", growYes);
 }
