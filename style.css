@@ -55,10 +55,11 @@ button:hover {
 }
 
 .options {
+    position: relative;
+    height: 300px;
     display: flex;
     justify-content: center;
-    gap: 30px;
-    position: relative;
+    gap: 20px;
 }
 
 .no-btn {
