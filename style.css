@@ -76,3 +76,9 @@ button{
     position:relative;
     z-index:5;
 }
+
+.no-img{
+    transition: 0.4s ease;
+}
+
+filter: grayscale()
