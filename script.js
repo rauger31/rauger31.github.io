@@ -27,6 +27,10 @@ function escapeButton() {
     //yesImage.style.transform = `scale(${scale})`;
     yesButton.style.boxShadow = `0 0 ${10 + attempts*5}px rgba(233,30,99,0.5)`;
 
+    // 🖤 NOIR & BLANC progressif
+    const grayscale = Math.min(attempts * 10, 100);
+    noImage.style.filter = `grayscale(${grayscale}%)`;
+    
     // texte du NON
     if(attempts === 1) noButton.textContent = "Tu es sûr ? 😳";
     if(attempts === 2) noButton.textContent = "Réfléchis 😭";
