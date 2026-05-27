@@ -204,7 +204,6 @@ button:hover{
 function validerChoix(){
 
     const date = document.getElementById("date").value;
-
     const activite = document.querySelector('input[name="activity"]:checked');
 
     if(!date){
@@ -227,8 +226,10 @@ function validerChoix(){
         <p><strong>Activité :</strong> ${activite.value}</p>
     `;
 
-    console.log("Date :", date);
-    console.log("Activité :", activite.value);
+    // 👉 petite pause avant redirection (optionnel mais joli)
+    setTimeout(() => {
+        window.location.href = "rendezvous.html";
+    }, 1500);
 }
 
 </script>
