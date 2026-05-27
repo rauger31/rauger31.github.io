@@ -1,20 +1,23 @@
-console.log("JS chargé");
-
 const noButton = document.getElementById("noButton");
 
 if (noButton) {
 
-    noButton.addEventListener("mouseover", () => {
+    const moveButton = () => {
 
-        const maxX = window.innerWidth - 120;
-        const maxY = window.innerHeight - 80;
+        const maxX = window.innerWidth - noButton.offsetWidth;
+        const maxY = window.innerHeight - noButton.offsetHeight;
 
-        const randomX = Math.floor(Math.random() * maxX);
-        const randomY = Math.floor(Math.random() * maxY);
+        const x = Math.random() * maxX;
+        const y = Math.random() * maxY;
 
-        noButton.style.left = randomX + "px";
-        noButton.style.top = randomY + "px";
+        noButton.style.left = x + "px";
+        noButton.style.top = y + "px";
+    };
 
-    });
+    // desktop
+    noButton.addEventListener("mouseenter", moveButton);
+
+    // mobile (IMPORTANT !)
+    noButton.addEventListener("touchstart", moveButton);
 
 }
