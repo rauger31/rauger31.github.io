@@ -63,6 +63,9 @@ button:hover {
     transition: 0.1s;
     user-select: none;
     transform: rotate(-2deg);
+    left:60%;
+    top:65%;
+    z-index:9999;
 }
 
 .btn-yes {
