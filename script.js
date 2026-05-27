@@ -3,62 +3,48 @@ const yesButton = document.getElementById("yesButton");
 
 let attempts = 0;
 
-if (noButton && yesButton) {
+function moveButton(){
 
-    function moveNo() {
+    const maxX = window.innerWidth - noButton.offsetWidth;
+    const maxY = window.innerHeight - noButton.offsetHeight;
 
-        const rect = noButton.getBoundingClientRect();
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
 
-        const maxX = window.innerWidth - rect.width;
-        const maxY = window.innerHeight - rect.height;
+    noButton.style.left = x + "px";
+    noButton.style.top = y + "px";
 
-        const x = Math.random() * maxX;
-        const y = Math.random() * maxY;
-
-        noButton.style.left = x + "px";
-        noButton.style.top = y + "px";
-
-        // 😈 rotation aléatoire
-        const rotation = Math.random() * 40 - 20;
-        noButton.style.transform = `rotate(${rotation}deg)`;
-    }
-
-    function growYes() {
-
-        attempts++;
-
-        // ❤️ bouton OUI grossit
-        let scale = 1 + attempts * 0.15;
-        yesButton.style.transform = `scale(${scale})`;
-
-        yesButton.style.transition = "0.3s";
-        yesButton.style.boxShadow =
-            `0 0 ${10 + attempts * 5}px rgba(233,30,99,0.6)`;
-
-        // 😄 textes fun
-        if (attempts === 1) {
-            yesButton.textContent = "OUI ❤️";
-        }
-
-        if (attempts === 2) {
-            yesButton.textContent = "OUI 😍";
-        }
-
-        if (attempts === 3) {
-            yesButton.textContent = "OUI 💍";
-        }
-
-        if (attempts >= 4) {
-            yesButton.textContent = "OUIII 🔥";
-        }
-
-        // 🔥 le NON fuit
-        moveNo();
-    }
-
-    // 🖱️ PC
-    noButton.addEventListener("mouseenter", growYes);
-
-    // 📱 Mobile
-    noButton.addEventListener("touchstart", growYes);
+    // rotation fun 😄
+    const rotation = Math.random() * 40 - 20;
+    noButton.style.transform = `rotate(${rotation}deg)`;
 }
+
+function escapeButton(){
+
+    attempts++;
+
+    // OUI grossit ❤️
+    const scale = 1 + attempts * 0.15;
+    yesButton.style.transform = `scale(${scale})`;
+
+    // texte drôle 😈
+    if(attempts === 1){
+        noButton.textContent = "Tu es sûr ? 😳";
+    }
+
+    if(attempts === 2){
+        noButton.textContent = "Réfléchis 😭";
+    }
+
+    if(attempts >= 3){
+        noButton.textContent = "Impossible 😈";
+    }
+
+    moveButton();
+}
+
+// PC
+noButton.addEventListener("mouseenter", escapeButton);
+
+// Mobile
+noButton.addEventListener("touchstart", escapeButton);
