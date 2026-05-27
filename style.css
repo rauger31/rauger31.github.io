@@ -66,6 +66,7 @@ button:hover {
     background:#8b5d5d;
     position: absolute;
     transition: 0.1s;
+    user-select: none;
 }
 
 #overlay {
