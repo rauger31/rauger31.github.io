@@ -81,12 +81,20 @@ button{
 
         <div class="choice">
             <img src="yes.jpg">
-            <button class="btn-yes">OUI</button>
+            <button class="btn-yes"
+            onclick="window.location.href='merci.html'">
+                OUI
+            </button>
         </div>
 
         <div class="choice">
             <img src="no.jpg">
-            <button class="no-btn" id="noButton">Non 😢</button>
+            <button class="btn-no"
+            onclick="this.style.position='absolute';
+            this.style.left=Math.random()*200+'px';
+            this.style.top=Math.random()*500+'px';">
+                NON
+            </button>
 
         </div>
 
