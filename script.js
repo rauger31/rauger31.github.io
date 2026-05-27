@@ -24,7 +24,7 @@ function escapeButton() {
     // bouton OUI grossit
     const scale = 1 + attempts * 0.12;
     yesButton.style.transform = `scale(${scale})`;
-    yesImage.style.transform = `scale(${scale})`;
+    //yesImage.style.transform = `scale(${scale})`;
     yesButton.style.boxShadow = `0 0 ${10 + attempts*5}px rgba(233,30,99,0.5)`;
 
     // texte du NON
