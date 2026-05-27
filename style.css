@@ -50,12 +50,7 @@ button:hover {
     height: 200px;
 }
 
-.choice {
-    position: relative;
-}
-
 .options {
-    position: relative;
     height: 300px;
     display: flex;
     justify-content: center;
@@ -64,9 +59,10 @@ button:hover {
 
 .no-btn {
     background:#8b5d5d;
-    position: absolute;
+    position: fixed;
     transition: 0.1s;
     user-select: none;
+    transform: rotate(-2deg);
 }
 
 .btn-yes {
