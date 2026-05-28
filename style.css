@@ -73,3 +73,15 @@ button{
 
     transition:0.15s;
 }
+
+.corner-img{
+    position:fixed;
+    bottom:10px;
+    right:10px;
+
+    width:55px;     /* taille petite */
+    height:auto;
+
+    opacity:0.95;
+    z-index:9999;
+}
