@@ -66,6 +66,9 @@ button{
     left:60%;
     top:70%;
 
+    width:170px;
+    height:44.67px;
+
     z-index:9999;
 
     transition:0.15s;
