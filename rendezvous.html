@@ -3,44 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Invitation pour Mélanie </title>
+<title>Invitation pour Mélanie</title>
 
 <style>
 body{
     margin:0;
     background:#e8d7c3;
     font-family: 'Georgia', serif;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
 }
 
-.card{
-    width:350px;
-    background:#f2e4d4;
-    padding:20px;
-    border-radius:25px;
+/* CONTAINER UNIQUE */
+.container{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    position:relative;
     text-align:center;
+}
+
+/* IMAGE PRINCIPALE */
+.photo{
+    width:350px;
+    border-radius:15px;
     box-shadow:0 5px 15px rgba(0,0,0,0.2);
 }
 
-.photo{
-    width:100%;
-    border-radius:15px;
-}
-
-h1{
-    font-size:38px;
-    margin:20px 0 5px;
+/* TEXTE */
+h1, h2{
     color:#5c4333;
 }
 
 p{
-    font-size:22px;
+    font-size:18px;
     color:#6d5240;
 }
 
+/* BOUTON */
 button{
     margin-top:20px;
     background:#7c9b6d;
@@ -52,12 +52,11 @@ button{
     cursor:pointer;
 }
 
-/* IMAGE FIXE EN BAS */
+/* IMAGE BAS */
 .bottom-img{
-    position:fixed;
+    position:absolute;
     bottom:10px;
-    left:50%;
-    transform:translateX(-50%);
+    right:10px;
     width:40px;
     height:40px;
     object-fit:cover;
@@ -67,20 +66,20 @@ button{
 
 <body>
 
-<div class="card">
+<div class="container">
 
     <img src="images/Image7.jpg" class="photo">
 
     <div id="result"></div>
-    
+
     <button onclick="window.location.href='https://www.instagram.com/_rauger_/'">
-      (dis moi tes choix sur insta pcq j'ai pas réussis à récupérer mdrrr)
+        (dis moi tes choix sur insta pcq j'ai pas réussis à récupérer mdrrr)
     </button>
 
-</div>
+    <!-- image en bas du container -->
+    <img src="images/Image13" class="bottom-img">
 
-<!-- IMAGE AJOUTÉE EN BAS -->
-<img src="images/Image13" class="bottom-img">
+</div>
 
 <script>
 window.onload = function() {
@@ -88,7 +87,8 @@ window.onload = function() {
     const date = localStorage.getItem("date");
     const activite = localStorage.getItem("activite");
 
-    const container = document.querySelector(".card");
+    const container = document.querySelector(".container");
+
     container.style.opacity = 0;
     container.style.transform = "translateY(20px)";
 
@@ -101,15 +101,11 @@ window.onload = function() {
         container.innerHTML = `
             <h2>❤️ Notre rendez-vous est confirmé</h2>
 
-            <p style="font-size:18px;">
-                📅 <strong>Date :</strong> ${date}
-            </p>
+            <p>📅 <strong>Date :</strong> ${date}</p>
 
-            <p style="font-size:18px;">
-                🎯 <strong>Activité :</strong> ${activite}
-            </p>
+            <p>🎯 <strong>Activité :</strong> ${activite}</p>
 
-            <p style="margin-top:20px; font-size:20px;">
+            <p style="margin-top:20px;">
                 Déjà hâte !
             </p>
 
@@ -125,6 +121,6 @@ window.onload = function() {
     }, 500);
 };
 </script>
-    
+
 </body>
 </html>
