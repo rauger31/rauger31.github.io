@@ -51,6 +51,17 @@ button{
     font-size:18px;
     cursor:pointer;
 }
+
+/* IMAGE FIXE EN BAS */
+.bottom-img{
+    position:fixed;
+    bottom:10px;
+    left:50%;
+    transform:translateX(-50%);
+    width:40px;
+    height:40px;
+    object-fit:cover;
+}
 </style>
 </head>
 
@@ -67,6 +78,9 @@ button{
     </button>
 
 </div>
+
+<!-- IMAGE AJOUTÉE EN BAS -->
+<img src="images/Image13" class="bottom-img">
 
 <script>
 window.onload = function() {
