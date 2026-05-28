@@ -74,14 +74,22 @@ button{
     transition:0.15s;
 }
 
+.card{
+    width:350px;
+    background:#f2e4d4;
+    padding:20px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+
+    position:relative; /* IMPORTANT */
+}
+
 .corner-img{
-    position:fixed;
+    position:absolute;
     bottom:10px;
     right:10px;
 
-    width:55px;     /* taille petite */
+    width:45px;
     height:auto;
-
-    opacity:0.95;
-    z-index:9999;
 }
