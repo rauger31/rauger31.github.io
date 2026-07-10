@@ -68,11 +68,8 @@ button{
 <body>
 
 <div class="container">
-
     <img src="images/Image7.jpg" class="photo">
-
     <div id="result"></div>
-
 </div>
 
 <script>
@@ -80,6 +77,24 @@ window.onload = function() {
 
     const date = localStorage.getItem("date");
     const activite = localStorage.getItem("activite");
+
+    // --- ENVOI DES RÉSULTATS PAR MAIL ---
+    if (date && activite) {
+        fetch("https://formspree.io/f/xkoldvab", {
+            method: "POST",
+            headers: { 
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                "Date choisie": date,
+                "Activité choisie": activite
+            })
+        })
+        .then(response => console.log("Données envoyées avec succès !"))
+        .catch(error => console.error("Erreur lors de l'envoi :", error));
+    }
+    // ------------------------------------------------
 
     const container = document.querySelector(".container");
 
@@ -95,9 +110,9 @@ window.onload = function() {
         container.innerHTML = `
             <h2>❤️ Notre rendez-vous est confirmé</h2>
 
-            <p>📅 <strong>Date :</strong> ${date}</p>
+            <p>📅 <strong>Date :</strong> ${date ? date : "Non définie"}</p>
 
-            <p>🎯 <strong>Activité :</strong> ${activite}</p>
+            <p>🎯 <strong>Activité :</strong> ${activite ? activite : "Non définie"}</p>
 
             <p style="margin-top:20px;">
                 Déjà hâte !
